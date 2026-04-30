@@ -1,0 +1,130 @@
+<Page x:Class="P26_002_Pultral.Pages.ValidateImpressionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="clr-namespace:P26_002_Pultral.Controls"
+      mc:Ignorable="d"
+      d:DesignHeight="1080"
+      d:DesignWidth="1920"
+      Title="ValidateImpressionPage"
+      Background="{StaticResource AppBackgroundBrush}">
+
+    <Grid Margin="40">
+        <Border Background="#66F8F8FF"
+                BorderBrush="{StaticResource LightBorderBrush}"
+                BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Blue title bar with search box and load button -->
+                <Border Grid.Row="0"
+                        Background="{StaticResource PrimaryBrandBrush}"
+                        Padding="24,14">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Margin="0,0,12,0">
+                            <TextBox x:Name="SearchTextBox"
+                                     Height="46" FontSize="18"
+                                     VerticalContentAlignment="Center"
+                                     KeyDown="SearchTextBox_KeyDown"/>
+                            <TextBlock IsHitTestVisible="False"
+                                       Text="Entrer un num&#233;ro de commande..."
+                                       VerticalAlignment="Center"
+                                       Margin="12,0"
+                                       FontSize="18" FontStyle="Italic"
+                                       Foreground="{StaticResource SecondaryTextBrush}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchTextBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+
+                        <Button Grid.Column="1"
+                                Content="Charger les Produits"
+                                Height="46" Padding="28,0"
+                                FontSize="18" FontWeight="SemiBold"
+                                Background="White"
+                                Foreground="{StaticResource PrimaryBrandBrush}"
+                                BorderThickness="0"
+                                Click="LoadButton_Click"/>
+                    </Grid>
+                </Border>
+
+                <!-- Table header -->
+                <Border Grid.Row="1"
+                        Background="#F0F3F7"
+                        BorderBrush="{StaticResource LightBorderBrush}"
+                        BorderThickness="1,1,1,0"
+                        Margin="24,16,24,0">
+                    <Grid Height="44" Margin="0,0,17,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Description de l'Item" FontWeight="SemiBold" FontSize="18" VerticalAlignment="Center" Padding="12,0"/>
+                        <TextBlock Grid.Column="1" Text="Item"                  FontWeight="SemiBold" FontSize="18" VerticalAlignment="Center" Padding="12,0"/>
+                        <TextBlock Grid.Column="2" Text="No de Job"             FontWeight="SemiBold" FontSize="18" VerticalAlignment="Center" Padding="12,0"/>
+                        <TextBlock Grid.Column="3" Text="Quantit&#233; Valid&#233;" FontWeight="SemiBold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Padding="4,0" TextWrapping="Wrap"/>
+                    </Grid>
+                </Border>
+
+                <!-- Item list -->
+                <ListBox x:Name="ProductsListBox" Grid.Row="2"
+                         Margin="24,0,24,0"
+                         BorderThickness="1" Padding="0" FontSize="18"
+                         BorderBrush="{StaticResource LightBorderBrush}"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Padding"                    Value="0,6"/>
+                            <Setter Property="Margin"                     Value="0"/>
+                            <Setter Property="BorderBrush"                Value="{StaticResource LightBorderBrush}"/>
+                            <Setter Property="BorderThickness"            Value="0,0,0,1"/>
+                            <Setter Property="Background"                 Value="White"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="Focusable"                  Value="False"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsValidationComplete}" Value="True">
+                                    <Setter Property="Background" Value="#C8E6C9"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsValidationOver}" Value="True">
+                                    <Setter Property="Background" Value="#FFCDD2"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <controls:ValidateItemControl/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <!-- Bottom buttons -->
+                <UniformGrid Grid.Row="3" Rows="1" Columns="2" Margin="24,16,24,16">
+                    <Button Content="Retour"  Style="{StaticResource PrimaryButtonStyle}" Click="RetourButton_Click"  FontSize="20" Padding="0,20"/>
+                    <Button Content="Effacer" Style="{StaticResource ErrorButtonStyle}"   Click="EffacerButton_Click" FontSize="20" Padding="0,20"/>
+                </UniformGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

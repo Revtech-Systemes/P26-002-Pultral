@@ -1,0 +1,83 @@
+<Window x:Class="P26_002_Pultral.Windows.ManualInputModalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        Title="Saisie manuelle du produit"
+        Height="600"
+        Width="600"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Background="#F8F8FF">
+    <Grid Margin="36">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="383*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Bar -->
+        <Border Background="{StaticResource PrimaryBrandBrush}" Padding="16,10" Margin="-36,-36,-36,0" Grid.ColumnSpan="2">
+            <TextBlock Text="Saisie manuelle du produit"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource OnDarkTextBrush}"/>
+        </Border>
+
+        <!-- Form Fields -->
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Margin="0,16,0,0">
+            <StackPanel>
+                <TextBlock Text="Description" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="DescriptionBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Item" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="ItemBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="No de Job" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="NoDeJobBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="No d'Ordre de Travail" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="WorkOrderNumberBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Code Produit" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="ProductCodeBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Description de l'Item" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="ItemDescriptionBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="No de Commande Client" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="SalesOrderNumberBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="No de Commande Achat" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="PurchaseOrderNumberBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="ID Client" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="CustomerIdBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Nom Client" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="CustomerNameBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Bar Run" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="BarRunBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Bar Mark" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="BarMarkBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Spécification Produit 3" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="ProductSpecification3Box" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Spécification Produit 4" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="ProductSpecification4Box" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Spécification Produit 6" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="ProductSpecification6Box" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Quantité Imprimée" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="QuantiteImprimeeBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Quantité Totale" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="QuantiteTotaleBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Nbr de Bundles" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="NbrDeBundlesBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Nbr d'Étiquettes" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="NbrEtiquettesBox" Margin="0,4,0,8" FontSize="16"/>
+                <TextBlock Text="Quantité Validée" FontWeight="Bold" FontSize="16" Margin="0,8,0,0"/>
+                <TextBox x:Name="QuantiteValideeBox" Margin="0,4,0,8" FontSize="16"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Action Buttons -->
+        <UniformGrid Grid.Row="2" Rows="1" Columns="2" Margin="0,32,0,0" Grid.ColumnSpan="2">
+            <Button x:Name="CancelButton" Content="Annuler" Style="{StaticResource ErrorButtonStyle}" FontSize="20" MinWidth="140" Height="44" Click="Cancel_Click"/>
+            <Button x:Name="SaveButton" Content="Enregistrer" Style="{StaticResource SuccessButtonStyle}" FontSize="20" MinWidth="140" Height="44" Click="Save_Click"/>
+        </UniformGrid>
+    </Grid>
+</Window>
